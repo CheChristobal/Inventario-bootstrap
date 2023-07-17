@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <style>
+    body {
+      background: linear-gradient(to right, #ff7f50, #ffa500);
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .card {
+      background: linear-gradient(to right, #ffffff, #f1f1f1);
+      border: none;
+      border-radius: 10px;
+      box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+    }
+  </style>
+  <title>Inventario</title>
+</head>
+<body>
+  <div class="container">
+    <div class="row justify-content-center">
+      <div class="col-lg-6 col-md-8">
+        <div class="card mt-4">
+          <h1 class="card-header text-center">Inventario</h1>
+          <div class="card-body">
+            <form>
+              <div class="form-group">
+                <label for="nombre">Nombre:</label>
+                <input type="text" class="form-control" id="nombre">
+              </div>
+    
+              <div class="form-group">
+                <label for="precio">Precio:</label>
+                <input type="number" class="form-control" id="precio">
+              </div>
+    
+              <div class="form-group">
+                <label for="cantidad">Cantidad:</label>
+                <input type="number" class="form-control" id="cantidad">
+              </div>
+    
+              <button type="button" class="btn btn-primary btn-block" onclick="agregarProducto()">Agregar Producto</button>
+            </form>
+          </div>
+        </div>
+    
+        <div class="card mt-4">
+          <div class="card-body">
+            <h2 class="card-title text-center">Listado de Productos</h2>
+            <table class="table table-striped">
+              <thead>
+                <tr>
+                  <th>Nombre</th>
+                  <th>Precio</th>
+                  <th>Cantidad</th>
+                </tr>
+              </thead>
+              <tbody id="productos-body">
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <script>
+    function agregarProducto() {
+      const nombre = document.getElementById('nombre').value;
+      const precio = document.getElementById('precio').value;
+      const cantidad = document.getElementById('cantidad').value;
+
+      const tableBody = document.getElementById('productos-body');
+      const newRow = tableBody.insertRow();
+
+      const cell1 = newRow.insertCell();
+      const cell2 = newRow.insertCell();
+      const cell3 = newRow.insertCell();
+
+      cell1.innerHTML = nombre;
+      cell2.innerHTML = precio;
+      cell3.innerHTML = cantidad;
+
+      document.getElementById('nombre').value = '';
+      document.getElementById('precio').value = '';
+      document.getElementById('cantidad').value = '';
+    }
+  </script>
+</body>
+</html>
